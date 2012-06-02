@@ -1,0 +1,46 @@
+<div class="homepage-top">
+  <h1>Discover CBSE</h1>
+  <p>A <%= link_to 'Kingston University', 'http://kingston.ac.uk' %> CBSE master class project for designing, implementing and demonstrating a <strong>state of the art</strong> online integrated business transaction system</p>
+  <p>
+    <%= link_to "Create a FREE account now!", new_user_session_path, class: 'btn btn-primary btn-large' %>
+    <%= link_to "Existing members login", new_user_registration_path, class: 'btn btn-large' %>
+  </p>
+</div>
+<div class="homepage-marketing">
+  <h1>Exploring the world of component based software engineering</h1>
+  <h2>Built with those amazing components:</h2>
+  <div class="row">
+    <div class="span4">
+      <%= image_tag 'icons/rails.png', alt: 'Ruby on Rails', size: '80x80' %>
+      <h3>Ruby on Rails</h3>
+      <p>Latest and greatest ruby web application framework, designed for programmer happiness and unbeatable productivity.</p>
+    </div>
+    <div class="span4">
+      <%= image_tag 'icons/bootstrap.png', alt: 'Bootstrap', size: '80x80' %>
+      <h3>Bootstrap GUI</h3>
+      <p>Semantic and HTML5 compliant web user interface component. Built with lots of love by a couple of Twitter engineers.</p>
+    </div>
+    <div class="span4">
+      <%= image_tag 'icons/unicorn.png', alt: 'Unicorn', size: '80x80' %>
+      <h3>Unicorn Application Server</h3>
+      <p>A fast-client application server, designed to work on POSIX compliant systems. Has great rails integration and follows the UNIX principle.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span4">
+      <%= image_tag 'icons/json.gif', alt: 'JSON', size: '80x80' %>
+      <h3>Jbuilder RESTful API</h3>
+      <p>The most elegant REST interface component that allows you to design RESTful services, based on existing business logic.</p>
+    </div>
+    <div class="span4">
+      <%= image_tag 'icons/mysql.gif', alt: 'Mysql', size: '80x80' %>
+      <h3>MySQL RDBMS</h3>
+      <p>The world's famous open source relational database. A great component to power your ActiveRecord Object Relational Mapper.</p>
+    </div>
+    <div class="span4">
+      <%= image_tag 'icons/devise.png', alt: 'Devise', size: '80x80' %>
+      <h3>Devise Authentication</h3>
+      <p>Flexible drop-in authentication component for rails applications. Built on the solid warden foundation by Platformatec.</p>
+    </div>
+  </div>    
+</div>
