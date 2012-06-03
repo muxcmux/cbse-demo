@@ -16,26 +16,20 @@
     <link href='http://fonts.googleapis.com/css?family=Brawler' rel='stylesheet' type='text/css'>
 
     <!-- Le fav and touch icons -->
-    <link href="images/favicon.ico" rel="shortcut icon">
-    <link href="images/apple-touch-icon.png" rel="apple-touch-icon">
-    <link href="images/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
-    <link href="images/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114">
+    <link href="/favicon.ico" rel="shortcut icon">
   </head>
   <body>
 
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
-          <div class="container">
-          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="#">CBSE</a>
+        <div class="container">
+          
+          <a class="brand" href="/">CBSE</a>
           <div class="container nav-collapse">
             <ul class="nav">
                 <li><%= link_to 'Login', new_user_session_path %></li>
                 <li><%= link_to 'Register', new_user_registration_path %></li>
+                <li><%= link_to 'Manage', management_path %></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -52,7 +46,7 @@
       </div><!--/content-->
 
       <footer>
-        <p>&copy; Kingston University <%= Time.now.year %></p>
+        <p>&copy; Anthony Karasavov K1159488, <%= Time.now.year %></p>
       </footer>
 
     </div> <!-- /container -->

@@ -1,12 +1,14 @@
-<h2>Forgot your password?</h2>
-
-<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+<div class="login span6">
   <%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+  <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, class: 'form-inline well' }) do |f| %>
+    
+    <div class="input-prepend">
+      <span class="add-on"><i class="icon-envelope"></i></span><%= f.email_field :email, autocomplete: :off, placeholder: 'E-mail', class: 'input-large' %>
+    </div>
 
-  <div><%= f.submit "Send me reset password instructions" %></div>
-<% end %>
+    <%= f.submit "Send me reset password instructions", class: 'btn btn-primary' %>
+  <% end %>
+  
 
-<%= render :partial => "devise/shared/links" %>
+</div>

@@ -1,5 +1,13 @@
 Cbse::Application.routes.draw do
-  devise_for :users
+  resources :accounts
+
+  devise_for :admins
+
+  devise_for :users, path_prefix: :auth
+  
+  resources :users
+  
+  match 'management' => 'management#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

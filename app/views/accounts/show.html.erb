@@ -1,0 +1,27 @@
+<h1>/Account</h1>
+
+<p>
+  <b>User</b><br>
+  <%= @account.user_id %>
+</p>
+
+<p>
+  <b>Name</b><br>
+  <%= @account.name %>
+</p>
+
+<p>
+  <b>Number</b><br>
+  <%= @account.number %>
+</p>
+
+<p>
+  <b>Balance</b><br>
+  <%= @account.balance %>
+</p>
+
+<div class="form-actions">
+  <%= link_to 'Back', accounts_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_account_path(@account), :class => 'btn' %>
+  <%= link_to 'Delete', account_path(@account), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>

@@ -1,6 +1,27 @@
 @import 'compass';
 body {
   background: image-url('bg.jpg') 0 0 repeat-x;
+  .container > footer {
+    margin: 50px 0 0 0;
+    p {
+      font-size: .9em;
+      color: #999;
+    }
+  }
+}
+#error_explanation {
+  padding: 8px 35px 8px 14px;
+  margin-bottom: 18px;
+  color: #C09853;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  border: 1px solid #FBEED5;
+  @include border-radius(4px);
+  color: #B94A48;
+  background-color: #F2DEDE;
+  border-color: #EED3D7;
+  h2 {
+    font-size: 1.2em;
+  }
 }
 .homepage-top {
   text-align: center;
@@ -50,4 +71,8 @@ body {
     float: left;
     margin: 0 10px 0 0;
   }
+}
+.login.span5, .login.span6 {
+  margin: 20px auto;
+  float: none;
 }

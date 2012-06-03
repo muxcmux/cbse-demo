@@ -1,0 +1,21 @@
+<div class="login span6">
+  
+  <% if flash[:alert] %>
+    <div class="alert alert-error">
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
+  
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), html: {class:'form-inline well'}) do |f| %>
+    <div class="input-prepend">
+      <span class="add-on"><i class="icon-envelope"></i></span><%= f.email_field :email, autocomplete: :off, placeholder: 'E-mail', class: 'input-medium' %>
+    </div>
+    <div class="input-prepend">
+      <span class="add-on"><i class="icon-lock"></i></span><%= f.password_field :password, autocomplete: :off, placeholder: 'Password', class: 'input-medium' %>
+    </div>
+    <%= f.submit "Login as manager", class: 'btn btn-primary' %>
+      
+  <% end %>
+
+</div>
+

@@ -38,6 +38,9 @@ gem 'capistrano'
 # To use debugger
 # gem 'debugger'
 
+gem 'simple_form'
+gem 'kaminari'
+
 # ====== Application components ======
 
 # GUI Component
