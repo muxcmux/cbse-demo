@@ -1,26 +1,31 @@
-<h1>Users</h1>
+<%= header_with_search 'Customers' %>
+
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>ID</th>
+      <th>Customer</th>
       <th>Email</th>
-      <th>Created at</th>
+      <th>Joined on</th>
       <th>Actions</th>
     </tr>
   </thead>
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.id %></td>
+        <td><%= link_to "#{user.firstname} #{user.lastname}", user_path(user) %></td>
         <td><%= link_to user.email, user_path(user) %></td>
-        <td><%= user.created_at %></td>
+        <td><%= pretty_date user.created_at %></td>
         <td>
-          <%= link_to 'Edit', edit_user_path(user), :class => 'btn btn-mini' %>
-          <%= link_to 'Destroy', user_path(user), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+          <div class="btn-group">
+            <%= link_to 'Edit', edit_user_path(user), :class => 'btn btn-mini' %>
+            <%= link_to 'Destroy', user_path(user), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+          </div>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<%= paginate @users %>
 
 <%= link_to 'New', new_user_path, :class => 'btn btn-primary' %>

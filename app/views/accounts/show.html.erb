@@ -1,23 +1,18 @@
-<h1>/Account</h1>
+<h1 style="margin-bottom: 20px;">Account <%= @account.number %></h1>
 
 <p>
-  <b>User</b><br>
-  <%= @account.user_id %>
+  <b>Account owner</b><br>
+  <%= link_to "#{@account.user.firstname} #{@account.user.lastname}", user_path(@account.user) %>
 </p>
 
 <p>
-  <b>Name</b><br>
+  <b>Account Type</b><br>
   <%= @account.name %>
 </p>
 
 <p>
-  <b>Number</b><br>
-  <%= @account.number %>
-</p>
-
-<p>
   <b>Balance</b><br>
-  <%= @account.balance %>
+  &pound; <%= @account.balance %>
 </p>
 
 <div class="form-actions">

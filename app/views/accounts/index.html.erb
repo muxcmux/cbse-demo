@@ -1,22 +1,24 @@
-<h1>Accounts</h1>
+<%= header_with_search 'Accounts' %>
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>ID</th>
-      <th>User</th>
-      <th>Created at</th>
+      <th>Number</th>
+      <th>Type</th>
+      <th>Owner</th>
       <th>Actions</th>
     </tr>
   </thead>
   <tbody>
     <% @accounts.each do |account| %>
       <tr>
-        <td><%= account.id %></td>
-        <td><%= link_to account.user_id, account_path(account) %></td>
-        <td><%= account.created_at %></td>
+        <td><%= link_to account.number, user_account_path(account.user, account) %></td>
+        <td><%= link_to account.name, user_account_path(account.user, account) %></td>
+        <td><%= link_to "#{account.user.firstname} #{account.user.lastname}", user_path(account.user) %></td>
         <td>
-          <%= link_to 'Edit', edit_account_path(account), :class => 'btn btn-mini' %>
-          <%= link_to 'Destroy', account_path(account), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+          <div class="btn-group">
+            <%= link_to 'Edit', edit_user_account_path(account.user, account), :class => 'btn btn-mini' %>
+            <%= link_to 'Destroy', user_account_path(account.user, account), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+          </div>
         </td>
       </tr>
     <% end %>

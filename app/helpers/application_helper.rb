@@ -32,4 +32,19 @@ module ApplicationHelper
     
   end
   
+  def pretty_date date
+    return date if date.is_a? String
+    date.strftime '%d %B, %Y @ %H:%I:%S'
+  end
+  
+  def header_with_search title
+    "<div class=\"row\">
+      <h1 class=\"span6\">#{title}</h1>
+      <form action=\"\" method=\"get\" class=\"form-search span3\">
+        <input type=\"text\" name=\"q\" value=\"#{params[:q]}\" class=\"input-medium search-query\">
+        <button type=\"submit\" class=\"btn\">Search</button>
+      </form>
+    </div>".html_safe
+  end
+  
 end

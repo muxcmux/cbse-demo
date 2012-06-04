@@ -9,6 +9,13 @@ class AccountsController < ApplicationController
   # GET /accounts.json
   def index
     @accounts = Account.order(:created_at).page(params[:page] || 1)
+    if params[:q].present?
+      filtered = @accounts.where('name LIKE ? OR number LIKE ?', "%#{params[:q]}%", "%#{params[:q]}%")
+      if filtered.blank?
+        filtered = @accounts.joins(:user).where('firstname LIKE ? OR lastname LIKE ? OR email LIKE ? OR country LIKE ? OR city LIKE ? OR address LIKE ?', "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%")
+      end
+      @accounts = filtered
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -47,7 +54,7 @@ class AccountsController < ApplicationController
   # POST /accounts.json
   def create
     @account = Account.new(params[:account])
-    @account.user_id = 5
+    @account.user = User.find_by_email(params[:account][:user_id])
 
     respond_to do |format|
       if @account.save

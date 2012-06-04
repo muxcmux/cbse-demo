@@ -158,6 +158,7 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    uuidtools (2.1.2)
     warden (1.1.1)
       rack (>= 1.0)
 
@@ -179,3 +180,4 @@ DEPENDENCIES
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
   unicorn
+  uuidtools

@@ -1,11 +1,15 @@
 Cbse::Application.routes.draw do
+  resources :transactions
+
   resources :accounts
 
   devise_for :admins
 
   devise_for :users, path_prefix: :auth
   
-  resources :users
+  resources :users do
+    resources :accounts
+  end
   
   match 'management' => 'management#index'
 

@@ -40,7 +40,7 @@ gem 'capistrano'
 
 gem 'simple_form'
 gem 'kaminari'
-
+gem 'uuidtools'
 # ====== Application components ======
 
 # GUI Component

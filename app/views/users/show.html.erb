@@ -1,4 +1,9 @@
-<h1>/User</h1>
+<h1 style="margin-bottom: 20px;">Customer details</h1>
+
+<p>
+  <b>Name</b><br>
+  <%= @user.firstname %> <%= @user.lastname %>
+</p>
 
 <p>
   <b>Email</b><br>
@@ -6,23 +11,28 @@
 </p>
 
 <p>
-  <b>Encrypted password</b><br>
-  <%= @user.encrypted_password %>
+  <b>Country</b><br>
+  <%= @user.country %>
 </p>
 
 <p>
-  <b>Reset password token</b><br>
-  <%= @user.reset_password_token %>
+  <b>City</b><br>
+  <%= @user.city %>
 </p>
 
 <p>
-  <b>Reset password sent at</b><br>
-  <%= @user.reset_password_sent_at %>
+  <b>Address</b><br>
+  <%= @user.address %>
 </p>
 
 <p>
-  <b>Remember created at</b><br>
-  <%= @user.remember_created_at %>
+  <b>Telephone</b><br>
+  <%= @user.telephone %>
+</p>
+
+<p>
+  <b>Joined on</b><br>
+  <%= pretty_date @user.created_at %>
 </p>
 
 <p>
@@ -31,24 +41,21 @@
 </p>
 
 <p>
-  <b>Current sign in at</b><br>
-  <%= @user.current_sign_in_at %>
+  <b>Last signed in on</b><br>
+  <%= pretty_date @user.last_sign_in_at || 'Never' %>
 </p>
 
 <p>
-  <b>Last sign in at</b><br>
-  <%= @user.last_sign_in_at %>
-</p>
-
-<p>
-  <b>Current sign in ip</b><br>
-  <%= @user.current_sign_in_ip %>
-</p>
-
-<p>
-  <b>Last sign in ip</b><br>
+  <b>Last signed in from (IP)</b><br>
   <%= @user.last_sign_in_ip %>
 </p>
+
+<% unless @user.accounts.blank? %>
+  <h1 style="margin-bottom: 20px;">Customer accounts</h1>
+  <% @user.accounts.each do |acc| %>
+    [<%= link_to acc.number, user_account_path(@user, acc) %>] <%= acc.name %> (&pound; <%= acc.balance %>)<br>
+  <% end %>
+<% end %>
 
 <div class="form-actions">
   <%= link_to 'Back', users_path, :class => 'btn'  %>

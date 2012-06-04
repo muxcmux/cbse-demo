@@ -8,8 +8,38 @@
       <legend>Sign Up</legend>
       
       <div class="control-group">
+        <%= f.label :firstname, class: 'control-label' %>
+        <div class="controls"><%= f.text_field :firstname, autocomplete: :off %></div>
+      </div>
+      
+      <div class="control-group">
+        <%= f.label :lastname, class: 'control-label' %>
+        <div class="controls"><%= f.text_field :lastname, autocomplete: :off %></div>
+      </div>
+      
+      <div class="control-group">
+        <%= f.label :country, class: 'control-label' %>
+        <div class="controls"><%= f.text_field :country, autocomplete: :off %></div>
+      </div>
+      
+      <div class="control-group">
+        <%= f.label :city, class: 'control-label' %>
+        <div class="controls"><%= f.text_field :city, autocomplete: :off %></div>
+      </div>
+      
+      <div class="control-group">
+        <%= f.label :address, class: 'control-label' %>
+        <div class="controls"><%= f.text_field :address, autocomplete: :off %></div>
+      </div>
+      
+      <div class="control-group">
         <%= f.label :email, class: 'control-label' %>
         <div class="controls"><%= f.email_field :email, autocomplete: :off %></div>
+      </div>
+      
+      <div class="control-group">
+        <%= f.label :telephone, class: 'control-label' %>
+        <div class="controls"><%= f.email_field :telephone, autocomplete: :off %></div>
       </div>
       
       <div class="control-group">

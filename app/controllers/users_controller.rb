@@ -5,7 +5,8 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @users = User.order(:created_at).page(params[:page] || 1)
+    @users = @users.where('firstname LIKE ? OR lastname LIKE ? OR email LIKE ? OR country LIKE ? OR city LIKE ? OR address LIKE ?', "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%") if params[:q].present?
 
     respond_to do |format|
       format.html # index.html.erb
