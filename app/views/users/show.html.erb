@@ -51,10 +51,25 @@
 </p>
 
 <% unless @user.accounts.blank? %>
-  <h1 style="margin-bottom: 20px;">Customer accounts</h1>
-  <% @user.accounts.each do |acc| %>
-    [<%= link_to acc.number, user_account_path(@user, acc) %>] <%= acc.name %> (&pound; <%= acc.balance %>)<br>
-  <% end %>
+  <h3>Customer accounts</h3>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Account nunber</th>
+        <th>Type</th>
+        <th>Balance</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @user.accounts.each do |acc| %>
+        <tr>
+          <td><%= link_to acc.number, user_account_path(@user, acc) %></td>
+          <td><%= acc.name %></td>
+          <td<%= acc.balance < 0 ? ' class=red' : '' %>>&pound; <%= acc.balance %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 <% end %>
 
 <div class="form-actions">

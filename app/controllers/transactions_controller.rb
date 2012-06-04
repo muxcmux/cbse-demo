@@ -1,5 +1,6 @@
 
 class TransactionsController < ApplicationController
+  layout 'management'
   # GET /transactions
   # GET /transactions.json
   def index
@@ -26,6 +27,7 @@ class TransactionsController < ApplicationController
   # GET /transactions/new.json
   def new
     @transaction = Transaction.new
+    @transaction.account = Account.find params[:account_id]
 
     respond_to do |format|
       format.html # new.html.erb
@@ -42,10 +44,11 @@ class TransactionsController < ApplicationController
   # POST /transactions.json
   def create
     @transaction = Transaction.new(params[:transaction])
+    @transaction.initiator = "Bank Branch"
 
     respond_to do |format|
       if @transaction.save
-        format.html { redirect_to @transaction, notice: 'Transaction was successfully created.' }
+        format.html { redirect_to account_url(@transaction.account), notice: 'Transaction was successfully created.' }
         format.json { render json: @transaction, status: :created, location: @transaction }
       else
         format.html { render action: "new" }

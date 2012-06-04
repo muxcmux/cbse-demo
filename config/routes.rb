@@ -1,14 +1,23 @@
 Cbse::Application.routes.draw do
   resources :transactions
 
-  resources :accounts
+  resources :accounts do 
+    resources :transactions
+  end
 
   devise_for :admins
 
   devise_for :users, path_prefix: :auth
   
   resources :users do
-    resources :accounts
+    resources :accounts do
+      get 'statement', on: :member
+    end
+  end
+  
+  resources :client_accounts do
+    get 'statement', on: :member
+    resources :client_transactions
   end
   
   match 'management' => 'management#index'

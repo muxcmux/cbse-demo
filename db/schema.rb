@@ -11,16 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120603111632) do
+ActiveRecord::Schema.define(:version => 20120604144909) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
     t.string   "name"
     t.string   "number"
-    t.decimal  "balance",      :precision => 10, :scale => 2
-    t.datetime "created_at",                                  :null => false
-    t.datetime "updated_at",                                  :null => false
-    t.string   "account_type"
+    t.decimal  "balance",    :precision => 10, :scale => 2, :default => 0.0
+    t.datetime "created_at",                                                 :null => false
+    t.datetime "updated_at",                                                 :null => false
     t.integer  "pin"
   end
 
@@ -47,10 +46,13 @@ ActiveRecord::Schema.define(:version => 20120603111632) do
 
   create_table "transactions", :force => true do |t|
     t.integer  "account_id"
-    t.decimal  "amount",           :precision => 10, :scale => 0
+    t.decimal  "amount",           :precision => 10, :scale => 2
     t.string   "transaction_type"
     t.datetime "created_at",                                      :null => false
     t.datetime "updated_at",                                      :null => false
+    t.string   "initiator"
+    t.decimal  "balance",          :precision => 10, :scale => 2
+    t.decimal  "overdraft_cost",   :precision => 10, :scale => 2
   end
 
   add_index "transactions", ["account_id"], :name => "index_transactions_on_account_id"

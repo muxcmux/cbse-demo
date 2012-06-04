@@ -1,10 +1,6 @@
 <div class="login span6">
   
-  <% if flash[:alert] %>
-    <div class="alert alert-error">
-      <%= flash[:alert] %>
-    </div>
-  <% end %>
+  <%= render 'common/flashes' %>
   
   <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), html: {class:'form-inline well'}) do |f| %>
     <div class="input-prepend">

@@ -1,16 +1,16 @@
 
-class AccountsController < ApplicationController
+class ClientAccountsController < ApplicationController
   
-  layout 'management'
+  layout 'user'
   
   
-  before_filter :authenticate_admin!
+  before_filter :authenticate_user!
   
   
   # GET /accounts
   # GET /accounts.json
   def index
-    @accounts = Account.order(:created_at).page(params[:page] || 1)
+    @accounts = current_user.accounts.order(:created_at).page(params[:page] || 1)
     if params[:q].present?
       filtered = @accounts.where('name LIKE ? OR number LIKE ?', "%#{params[:q]}%", "%#{params[:q]}%")
       if filtered.blank?
@@ -56,7 +56,7 @@ class AccountsController < ApplicationController
   # POST /accounts.json
   def create
     @account = Account.new(params[:account])
-    @account.user = User.find_by_email(params[:account][:user_id])
+    @account.user = current_user
 
     respond_to do |format|
       if @account.save

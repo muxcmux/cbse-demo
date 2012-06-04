@@ -26,11 +26,21 @@
           
           <a class="brand" href="/">CBSE</a>
           <div class="container nav-collapse">
-            <ul class="nav">
+            <% if user_signed_in? %>
+              <ul class="nav">
+                <li><a href="#">Welcome, <%= current_user.firstname %></a></li>
+                <li><%= link_to 'My accounts', client_accounts_path %></li>
+              </ul>
+              <ul class="nav pull-right">
+                <li><%= link_to '<i class="icon-off icon-white"></i> Logout'.html_safe, destroy_user_session_path, method: :delete %></li>
+              </ul>
+            <% else %>
+              <ul class="nav">
                 <li><%= link_to 'Login', new_user_session_path %></li>
                 <li><%= link_to 'Register', new_user_registration_path %></li>
                 <li><%= link_to 'Manage', management_path %></li>
-            </ul>
+              </ul>
+            <% end %>
           </div><!--/.nav-collapse -->
         </div>
       </div>

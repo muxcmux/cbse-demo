@@ -1,9 +1,4 @@
-<%= render 'common/flashes' %>
 <h1 style="margin-bottom: 20px;">Account <%= @account.number %></h1>
-<p>
-  <b>Account owner</b><br>
-  <%= link_to "#{@account.user.firstname} #{@account.user.lastname}", user_path(@account.user) %>
-</p>
 
 <p>
   <b>Account Type</b><br>
@@ -12,7 +7,7 @@
 
 <p>
   <b>Balance</b><br>
-  <span<%= @account.balance < 0 ? ' class=red' : '' %>>&pound; <%= @account.balance %></span>
+  &pound; <%= @account.balance %>
 </p>
 
 <h3>Recent Transactions</h3>
@@ -42,9 +37,5 @@
 </table>
 
 <div class="form-actions">
-  <%= link_to 'Deposit funds', new_account_transaction_path(@account, type: :deposit), class: 'btn btn-primary' %>
-  <%= link_to 'Withdraw funds', new_account_transaction_path(@account, type: :withdrawal), class: 'btn btn-primary' %>
-  <%= link_to 'Back', accounts_path, :class => 'btn'  %>
-  <%= link_to 'Edit', edit_account_path(@account), :class => 'btn' %>
-  <%= link_to 'Delete', account_path(@account), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+  <%= link_to 'Back', client_accounts_path, :class => 'btn'  %>
 </div>
