@@ -1,5 +1,5 @@
 <h1 style="margin-bottom: 20px;">Account <%= @account.number %></h1>
-
+<%= render 'common/statement_form' %>
 <p>
   <b>Account Type</b><br>
   <%= @account.name %>
@@ -7,7 +7,7 @@
 
 <p>
   <b>Balance</b><br>
-  &pound; <%= @account.balance %>
+  <%= number_to_money(@account.balance) %>
 </p>
 
 <h3>Recent Transactions</h3>
@@ -27,9 +27,9 @@
       <tr>
         <td><%= pretty_date t.created_at %></td>
         <td><%= t.transaction_type %></td>
-        <td>&pound; <%= t.amount.abs %></td>
-        <td<%= t.balance < 0 ? ' class=red' : '' %>>&pound; <%= t.balance %></td>
-        <td><%= t.overdraft_cost > 0 ? "&pound; #{t.overdraft_cost}".html_safe : '&mdash;'.html_safe %></td>
+        <td><%= number_to_money t.amount.abs %></td>
+        <td><%= number_to_money t.balance %></td>
+        <td><%= t.overdraft_cost > 0 ? number_to_money(t.overdraft_cost) : '&mdash;'.html_safe %></td>
         <td><%= t.initiator %></td>
       </tr>
     <% end %>

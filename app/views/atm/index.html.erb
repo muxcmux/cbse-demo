@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="debit-cards span8">
+    <header>Available debit cards</header>
+    <% current_user.accounts.each do |acc| %>
+      <a href="#" data-id="<%= acc.id %>" data-pin="<%= acc.pin %>" data-balance="<%= acc.balance %>"><%= current_user.firstname %> <%= current_user.lastname %><br><%= acc.name %><br><%= acc.number[0..16] %></a>
+    <% end %>
+  </div>
+</div>
+<div id="current-card"></div>
+<div class="row">
+  <div class="atm-machine span8">
+    <div class="screen">
+      <h1 id="atm-heading">Please insert your debit card</h1>
+      <div id="atm-screen">
+        
+        <div id="loader"></div>
+        
+        <div id="pin">
+          <form class="form form-inline" id="pin-form">
+            <input type="password" class="input-small" id="pin-number" placeholder="PIN">
+            <button type="submit" class="btn btn-primary">ENTER</button>
+          </form>
+        </div>
+        
+        <div id="operations-menu">
+          <div><a href="#" id="display-balance" class="btn btn-primary btn-large">&nbsp;&nbsp;</a> <span>Check balance</span></div>
+          <div><a href="#" id="withdraw-money" class="btn btn-primary btn-large">&nbsp;&nbsp;</a> <span>Withdraw money</span></div>
+        </div>
+        
+        <div id="balance-screen"></div>
+        
+        <div id="amount-menu">
+          <div><a data-amount="5" href="#" class="btn btn-primary btn-large withdraw">&nbsp;&nbsp;</a> <span>&pound; 5</span></div>
+          <div><a data-amount="10" href="#" class="btn btn-primary btn-large withdraw">&nbsp;&nbsp;</a> <span>&pound; 10</span></div>
+          <div><a data-amount="20" href="#" class="btn btn-primary btn-large withdraw">&nbsp;&nbsp;</a> <span>&pound; 20</span></div>
+          <div><a data-amount="50" href="#" class="btn btn-primary btn-large withdraw">&nbsp;&nbsp;</a> <span>&pound; 50</span></div>
+          <div><a data-amount="100" href="#" class="btn btn-primary btn-large withdraw">&nbsp;&nbsp;</a> <span>&pound; 100</span></div>
+        </div>
+        
+        <div id="response-screen"></div>
+        
+      </div>
+    </div>
+  </div>
+</div>

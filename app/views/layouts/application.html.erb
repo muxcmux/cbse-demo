@@ -28,7 +28,7 @@
           <div class="container nav-collapse">
             <% if user_signed_in? %>
               <ul class="nav">
-                <li><a href="#">Welcome, <%= current_user.firstname %></a></li>
+                <li><a href="#">Welcome, <%= current_user.firstname %> <%= current_user.lastname %></a></li>
                 <li><%= link_to 'My accounts', client_accounts_path %></li>
               </ul>
               <ul class="nav pull-right">

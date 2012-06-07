@@ -1,3 +1,4 @@
+<%= render 'common/flashes' %>
 <h1 style="margin-bottom: 20px;">Customer details</h1>
 
 <p>
@@ -65,7 +66,7 @@
         <tr>
           <td><%= link_to acc.number, user_account_path(@user, acc) %></td>
           <td><%= acc.name %></td>
-          <td<%= acc.balance < 0 ? ' class=red' : '' %>>&pound; <%= acc.balance %></td>
+          <td><%= number_to_money acc.balance %></td>
         </tr>
       <% end %>
     </tbody>

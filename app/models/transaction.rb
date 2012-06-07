@@ -5,7 +5,7 @@ class Transaction < ActiveRecord::Base
   OVERDRAFT_INTEREST = BigDecimal.new '0.02'
   
   belongs_to :account
-  attr_accessible :amount, :transaction_type, :account_id
+  attr_accessible :amount, :transaction_type, :account_id, :initiator, :overdraft_cost
   
   validates :amount, :numericality => true
   validates :transaction_type, :inclusion => { :in => %w(deposit withdrawal),

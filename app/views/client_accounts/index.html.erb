@@ -12,7 +12,7 @@
       <tr>
         <td><%= link_to account.number, client_account_path(account) %></td>
         <td><%= link_to account.name, client_account_path(account) %></td>
-        <td<%= account.balance < 0 ? ' class=red' : '' %>>&pound; <%= account.balance %></td>
+        <td><%= number_to_money account.balance %></td>
       </tr>
     <% end %>
   </tbody>

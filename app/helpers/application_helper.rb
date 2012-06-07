@@ -47,4 +47,9 @@ module ApplicationHelper
     </div>".html_safe
   end
   
+  
+  def number_to_money n
+    number_to_currency n, unit: '&pound;', format: '%u %n', negative_format: '<span class=red>%u -%n</span>'
+  end
+  
 end

@@ -97,7 +97,11 @@ class AccountsController < ApplicationController
     end
   end
   
-  private
+  def statement
+    @account = Account.find params[:id]
+    @transactions = @account.transactions.where('created_at BETWEEN ? AND ?', "#{params[:statement][:from]} 00:00:00", "#{params[:statement][:to]} 23:59:59").order('created_at desc')
+    render layout: 'statement'
+  end
   
   
 end

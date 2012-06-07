@@ -29,7 +29,7 @@
             <% if user_signed_in? %>
               <ul class="nav">
                 <li><a href="#">Welcome, <%= current_user.firstname %></a></li>
-                <li><%= link_to 'My accounts', user_accounts_path(current_user) %></li>
+                <li><%= link_to 'My accounts', client_accounts_path %></li>
               </ul>
               <ul class="nav pull-right">
                 <li><%= link_to '<i class="icon-off icon-white"></i> Logout'.html_safe, destroy_user_session_path, method: :delete %></li>

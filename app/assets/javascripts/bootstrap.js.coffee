@@ -3,3 +3,5 @@ jQuery ->
   $(".tooltip").tooltip()
   $("a[rel=tooltip]").tooltip()
   $('input.typeahead').typeahead()
+  $('.datepicker').datepicker().on 'changeDate', (ev) ->
+    $(@).datepicker('hide')

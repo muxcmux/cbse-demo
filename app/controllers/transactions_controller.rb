@@ -43,8 +43,9 @@ class TransactionsController < ApplicationController
   # POST /transactions
   # POST /transactions.json
   def create
+    sleep params[:delay].to_i if params[:delay]
     @transaction = Transaction.new(params[:transaction])
-    @transaction.initiator = "Bank Branch"
+    @transaction.initiator = "Bank Branch" if params[:transaction][:initiator].blank?
 
     respond_to do |format|
       if @transaction.save

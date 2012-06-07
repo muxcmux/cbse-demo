@@ -1,0 +1,8 @@
+<div class="span4" style="float:right;">
+  <form class="well form-inline" action="<%= request.url %>/statement" method="get" target="_blank">
+    <h4 style="margin-bottom: 10px; color: #888; text-shadow: 0 1px 0 white;">Generate bank statement for a period:</h4>
+    <div class="datepicker input-prepend date" data-date="<%= 1.month.ago.strftime('%Y-%m-%d') %>" data-date-format="yyyy-mm-dd"><span class="add-on"><i class="icon-calendar"></i></span><input type="text" class="input-small" value="<%= 1.month.ago.strftime('%Y-%m-%d') %>" name="statement[from]"></div>
+    <div class="datepicker input-prepend date" data-date="<%= Time.now.strftime('%Y-%m-%d') %>" data-date-format="yyyy-mm-dd"><span class="add-on"><i class="icon-calendar"></i></span><input type="text" class="input-small" value="<%= Time.now.strftime('%Y-%m-%d') %>" name="statement[to]"></div>
+    <button type="submit" class="btn btn-primary">Go</button>
+  </form>
+</div>

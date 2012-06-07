@@ -1,0 +1,45 @@
+
+    <h1 style="margin: 0 0 20px 0; padding: 0 0 10px 0; border-bottom: 1px solid #ccc;">
+      CBSE Account statement
+      <a href="javascript:window.close();" class="btn" style="display: inline-block; float: right; margin-top: 4px; margin-left: 5px;"><i class="icon-remove"></i> Close</a>
+      <a href="javascript:window.print();" class="btn btn-primary" style="display: inline-block; float: right; margin-top: 4px;"><i class="icon-print icon-white"></i> Print</a>
+    </h1>
+    <div style="font-size: 1.1em;">
+      <table style="width: auto;" border="0">
+        <tr><td style="text-align: right; padding: 3px 25px;">Account No.</td><td><%= @account.number %></td></tr>
+        <tr><td style="text-align: right; padding: 3px 25px;">Account type:</td><td><%= @account.name %></td></tr>
+        <tr><td style="text-align: right; padding: 3px 25px;">Current Balance:</td><td style="font-weight: bold;"><%= number_to_money @account.balance %></td></tr>
+        <tr><td style="text-align: right; padding: 3px 25px;">Name:</td><td><%= @account.user.firstname %> <%= @account.user.lastname %></td></tr>
+        <tr><td style="text-align: right; padding: 3px 25px;">Email:</td><td><%= @account.user.email %></td></tr>
+        <tr><td style="text-align: right; padding: 3px 25px;">Address:</td><td><%= @account.user.address %></td></tr>
+        <tr><td style="text-align: right; padding: 3px 25px;">City:</td><td><%= @account.user.city %></td></tr>
+        <tr><td style="text-align: right; padding: 3px 25px;">Country:</td><td><%= @account.user.country %></td></tr>
+        <tr><td style="text-align: right; padding: 3px 25px;">Telephone:</td><td><%= @account.user.telephone %></td></tr>
+      </table>
+    </div>
+    <hr>
+    <h1 style="margin: 0 0 40px 0; padding: 0 0 10px 0; border-bottom: 1px solid #ccc;">
+      Transactions <small>from <%= params[:statement][:from] %> to <%= params[:statement][:to] %></small>
+    </h1>
+    <table class="table table-bordered table-striped" style="width: 100%">
+      <thead>
+        <th>Date</th>
+        <th>Type</th>
+        <th>Amount</th>
+        <th>Balance</th>
+        <th>Overdraft cost</th>
+        <th>Initiator</th>
+      </thead>
+      <tbody>
+        <% @transactions.each do |t| %>
+          <tr>
+            <td><%= pretty_date t.created_at %></td>
+            <td><%= t.transaction_type %></td>
+            <td><%= number_to_money t.amount.abs %></td>
+            <td><%= number_to_money t.balance %></td>
+            <td><%= number_to_money t.overdraft_cost %></td>
+            <td><%= t.initiator %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>

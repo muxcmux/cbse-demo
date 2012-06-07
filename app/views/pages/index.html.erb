@@ -2,9 +2,14 @@
   <h1>Discover CBSE</h1>
   <p>A <%= link_to 'Kingston University', 'http://kingston.ac.uk' %> CBSE master class project for designing, implementing and demonstrating a <strong>state of the art</strong> online integrated business transaction system</p>
   <p>
-    <%= link_to "Create a FREE account now!", new_user_registration_path, class: 'btn btn-primary btn-large' %>
-    <%= link_to "Existing members login", new_user_session_path, class: 'btn btn-large' %> or
-    <%= link_to "Manage the system", management_path %>
+    <% if user_signed_in? %>
+      <%= link_to "Try the demo ATM Machine", '/atm', class: 'btn btn-primary btn-large', target: '_blank' %>
+      <%= link_to "View your account information", '/client_accounts', class: 'btn btn-large' %>
+    <% else %>
+      <%= link_to "Create a FREE account now!", new_user_registration_path, class: 'btn btn-primary btn-large' %>
+      <%= link_to "Existing members login", new_user_session_path, class: 'btn btn-large' %> or
+      <%= link_to "Manage the system", management_path %>
+    <% end %>
   </p>
 </div>
 <div class="homepage-marketing">

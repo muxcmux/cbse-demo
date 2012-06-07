@@ -1,7 +1,12 @@
 Cbse::Application.routes.draw do
+  
+  # used by third party apps to authenticate
+  resources :tokens
+  
   resources :transactions
 
   resources :accounts do 
+    get 'statement', on: :member
     resources :transactions
   end
 
@@ -19,6 +24,9 @@ Cbse::Application.routes.draw do
     get 'statement', on: :member
     resources :client_transactions
   end
+  
+  # the third party demo apps are accessed from here
+  match 'atm' => 'atm#index'
   
   match 'management' => 'management#index'
 
