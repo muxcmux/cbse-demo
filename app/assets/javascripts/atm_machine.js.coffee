@@ -34,10 +34,9 @@ $ ->
   $('.debit-cards a').on 'click', (e) ->
     clear_screen()
     $link = $(@)
-    balance = if current_card.data('balance') then current_card.data('balance') else $link.data('balance')
     $('#current-card').data
       pin: $link.data('pin')
-      balance: balance
+      balance: $link.data('balance')
       id: $link.data('id')
     e.preventDefault()
     atm_heading.html('Please enter your PIN')
@@ -47,6 +46,7 @@ $ ->
     e.preventDefault()
     $input = $("#pin-number")
     if $input.val().toString() == current_card.data('pin').toString()
+      $input.val('')
       display_operations_menu()
     else
       alert 'Incorrect PIN, please try again.'
@@ -69,7 +69,7 @@ $ ->
     $.ajax "/accounts/#{current_card.data('id')}/transactions.json",
       type: "POST",
       data:
-        delay: 1
+        delay: 4
         transaction:
           initiator: 'ATM Machine'
           transaction_type: 'withdrawal'
@@ -84,7 +84,7 @@ $ ->
           response_screen.append("<p>There was an ovedraft charge of <b>&pound; #{response.overdraft_cost}</b> to this transaction</p>")
         response_screen.append("<p>Your new account balance is <b>#{format_balance(response.balance)}</b></p>")
         response_screen.append("<p>Please collect your cash. Thank you for using CBSE ATM!</p>")
-        current_card.data('balance', response.balance)
+        $(".debit-cards a[data-id=#{current_card.data('id')}]").data('balance', response.balance)
       error: (response) ->
         atm_heading.html('Error!')
         loading.hide()
